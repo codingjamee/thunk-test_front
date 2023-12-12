@@ -1,8 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
-import PostTodo from "./PostTodo";
-import AppLayout from "./AppLayout";
-import TodoList from "./TodoList";
+import PostTodo from "./components/PostTodo";
+import AppLayout from "./components/AppLayout";
+import TodoList from "./components/TodoList";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,6 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="App">
-      <h1>Home화면</h1>
       <RouterProvider router={router} />
     </div>
   );

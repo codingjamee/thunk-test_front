@@ -8,7 +8,7 @@ const CardContainer = styled.div`
   /* Optional: Card 스타일 조정 */
   border-radius: 8px;
   overflow: hidden;
-  border: 0.5px solid gray;
+  border: 0.5px solid SeaGreen;
 `;
 
 export default CardContainer;

@@ -7,7 +7,6 @@ const AppLayout = () => {
   return (
     <>
       <Wrapper>
-        <h1>Home화면</h1>
         <div
           style={{
             display: "flex",

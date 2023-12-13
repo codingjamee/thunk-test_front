@@ -7,8 +7,10 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const BeforePostTodo = () => {
-  const reduxTodoList = useSelector((state) => state.todo.todos) | [];
+  const reduxTodoList = useSelector((state) => state.todo.todos);
   console.log({ reduxTodoList });
+
+  console.log(reduxTodoList[0]);
   const navigate = useNavigate();
 
   const onClickPostTodo = async () => {

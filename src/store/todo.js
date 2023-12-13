@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  todos: [{ id: "", todo: "" }],
+  todos: [],
 };
 
 const todoSlice = createSlice({
@@ -9,7 +9,8 @@ const todoSlice = createSlice({
   initialState: initialState,
   reducers: {
     storeTodos(state, action) {
-      state.todos = action.payload;
+      console.log(action.payload);
+      state.todos.push(action.payload);
     },
   },
 });

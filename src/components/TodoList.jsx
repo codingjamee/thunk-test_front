@@ -8,10 +8,8 @@ import { useSelector } from "react-redux";
 const TodoList = () => {
   const [todoList, setTodoList] = useState([]);
   const reduxTodoList = useSelector((state) => state.todo.todos) | [];
-  console.log({ reduxTodoList });
   const getTodos = async () => {
     const data = await axios.get("/api/todo");
-    console.log(data);
     if (data.status === 200) {
       console.log(data.data.todos);
       setTodoList(data.data.todos);
@@ -26,13 +24,13 @@ const TodoList = () => {
       <StyledCardBottom>
         {todoList &&
           todoList?.map((todo, idx) => (
-            <StyledInnerCard key={`todo-${idx}`}>{todo.todo}</StyledInnerCard>
+            <StyledInnerCard key={`todo-${idx}`}>{todo}</StyledInnerCard>
           ))}
       </StyledCardBottom>
       <Card title={<h5>redux stored todo list</h5>}>
         {reduxTodoList &&
           reduxTodoList?.map((todo, idx) => (
-            <StyledInnerCard key={`todo-${idx}`}>{todo.todo}</StyledInnerCard>
+            <StyledInnerCard key={`todo-${idx}`}>{todo}</StyledInnerCard>
           ))}
       </Card>
     </Card>

@@ -3,18 +3,26 @@ import StyledCardBottom from "../styles/StyledCardBottom";
 import StyledInnerCard from "../styles/StyledInnerCard";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import axios from "axios";
-import { todoActions } from "../store/todo";
 import { useNavigate } from "react-router-dom";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { todoActions } from "../store/todo";
 
 const PostTodo = () => {
   const [todo, setTodo] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const fetchTodoList = createAsyncThunk("fetchTodo", async (todo) => {
+    try {
+      const result = dispatch(todoActions.storeTodos({ todo }));
+      return result;
+    } catch (err) {
+      console.error(err);
+    }
+  });
+
   const onClickAddTodo = async () => {
-    console.log({ todo: todo });
-    dispatch(todoActions.storeTodos({ todo }));
-    //여기서 thunk사용!!! 필
+    const fetchTodoResult = await dispatch(fetchTodoList(todo));
     navigate("/before-todo");
   };
 

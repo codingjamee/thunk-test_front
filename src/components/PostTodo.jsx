@@ -5,15 +5,17 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { todoActions } from "../store/todo";
+import { useNavigate } from "react-router-dom";
 
 const PostTodo = () => {
   const [todo, setTodo] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onClickAddTodo = async () => {
     console.log({ todo: todo });
-    const result = await axios.post("/api/todo", { todo: todo });
-    if (result.status === 200) setTodo("");
     dispatch(todoActions.storeTodos({ todo }));
+    //여기서 thunk사용!!! 필
+    navigate("/before-todo");
   };
 
   return (

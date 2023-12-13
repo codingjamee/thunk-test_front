@@ -17,11 +17,14 @@ const AppLayout = () => {
             margin: "0 auto",
           }}
         >
-          <StyledLink to="/todo-list">
-            <StyledButton>리스트 보기</StyledButton>
-          </StyledLink>
           <StyledLink to="/post-todo">
             <StyledButton>리스트 추가하기</StyledButton>
+          </StyledLink>
+          <StyledLink to="/before-todo">
+            <StyledButton>보낼 리스트 확인하기</StyledButton>
+          </StyledLink>
+          <StyledLink to="/todo-list">
+            <StyledButton>리스트 보기</StyledButton>
           </StyledLink>
         </div>
         <Outlet />

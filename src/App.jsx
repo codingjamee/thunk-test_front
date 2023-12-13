@@ -3,6 +3,7 @@ import "./App.css";
 import PostTodo from "./components/PostTodo";
 import AppLayout from "./components/AppLayout";
 import TodoList from "./components/TodoList";
+import BeforePostTodo from "./components/BeforePostTodo";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/todo-list",
         element: <TodoList />,
+      },
+      {
+        path: "/before-todo",
+        element: <BeforePostTodo />,
       },
     ],
   },

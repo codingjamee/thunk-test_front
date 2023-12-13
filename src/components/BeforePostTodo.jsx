@@ -14,7 +14,9 @@ const BeforePostTodo = () => {
   const navigate = useNavigate();
 
   const onClickPostTodo = async () => {
-    const result = await axios.post("/api/todo", { todo: reduxTodoList });
+    const result = await axios.post("/api/todo", {
+      todo: reduxTodoList[0].todo,
+    });
     if (result.status === 200) navigate("/todo-list");
   };
   return (

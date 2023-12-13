@@ -10,8 +10,9 @@ const PostTodo = () => {
   const [todo, setTodo] = useState("");
   const dispatch = useDispatch();
   const onClickAddTodo = async () => {
-    const postData = await axios.post("/todo", { todo: todo });
-    console.log(postData);
+    console.log({ todo: todo });
+    const result = await axios.post("/api/todo", { todo: todo });
+    if (result.status === 200) setTodo("");
     dispatch(todoActions.storeTodos({ todo }));
   };
 

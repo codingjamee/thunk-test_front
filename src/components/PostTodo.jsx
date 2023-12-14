@@ -4,7 +4,7 @@ import StyledInnerCard from "../styles/StyledInnerCard";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, unwrapResult } from "@reduxjs/toolkit";
 import { todoActions } from "../store/todo";
 
 const PostTodo = () => {
@@ -12,14 +12,20 @@ const PostTodo = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const fetchTodoList = createAsyncThunk("fetchTodo", async (todo) => {
-    try {
-      const result = dispatch(todoActions.storeTodos({ todo }));
-      return result;
-    } catch (err) {
-      console.error(err);
+  //thunkAPI.rejectWithValue는 dispatching이후 에러 체크
+  const fetchTodoList = createAsyncThunk(
+    "fetchTodo",
+    async (todo, thunkAPI) => {
+      try {
+        const result = await thunkAPI.dispatch(
+          todoActions.storeTodos({ todo })
+        );
+        return unwrapResult(result);
+      } catch (err) {
+        return thunkAPI.rejectWithValue(err.response.data);
+      }
     }
-  });
+  );
 
   const onClickAddTodo = async () => {
     const fetchTodoResult = await dispatch(fetchTodoList(todo));

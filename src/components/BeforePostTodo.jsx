@@ -17,7 +17,7 @@ const BeforePostTodo = () => {
     const result = await axios.post("/api/todo", {
       todo: reduxTodoList[0].todo,
     });
-    if (result.status === 200) navigate("/todo-list");
+    if (result.status === 200) navigate("/with-thunk-list");
   };
   return (
     <Card title={<h2>This is your Before send Todo List</h2>}>

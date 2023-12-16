@@ -26,6 +26,12 @@ const AppLayout = () => {
           <StyledLink to="/todo-list">
             <StyledButton>리스트 보기</StyledButton>
           </StyledLink>
+          <StyledLink to="/with-thunk-list">
+            <StyledButton>axios+customhook+thunk!!!</StyledButton>
+          </StyledLink>
+          <StyledLink to="/with-none-libs">
+            <StyledButton>noneLibsThunk!!!</StyledButton>
+          </StyledLink>
         </div>
         <Outlet />
       </Wrapper>

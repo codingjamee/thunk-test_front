@@ -7,6 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { createAsyncThunk, unwrapResult } from "@reduxjs/toolkit";
 import { todoActions } from "../store/todo";
 
+//useState를 사용하지 않고,
+//redux만으로 현재 상태를 관리하는 경우,
+//api통신 이후 해당 상태를 업데이트하여 화면에 그려줘야 하는경우
+//thunk를 활용해야 한다!!!
+//그래야 api 비동기 통신의 결괏값을 받아와서 thunk로 store에 저장할 수 있다.
+
 const PostTodo = () => {
   const [todo, setTodo] = useState("");
   const dispatch = useDispatch();
